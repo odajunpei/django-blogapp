@@ -1,0 +1,32 @@
+{% extends 'blogg/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-9">
+    <br>
+    <h2>Post一覧</h2>
+    <br>
+    <table class="table">
+      <thead>
+        <th>タイトル</th>
+        <th>内容</th>
+        <th>作成日時</th>
+        <th>更新日時</th>
+      </thead>
+      <tbody>
+        {% for item in post_list %}
+        <tr>
+          <td><a href="{% url 'blogg:post_detail' item.id %}">{{ item.title }}</a></td>
+          <td>{{ item.content }}</td>
+          <td>{{ item.created_at }}</td>
+          <td>{{ item.updated_at }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+  </div>
+</div>
+
+
+{% endblock %}
