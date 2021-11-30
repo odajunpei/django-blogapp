@@ -1,9 +1,29 @@
 {% extends 'blogg/base.html' %}
 
 {% block content %}
-<h2>登録ページ</h2>
+<div class="row">
+  <div class="col-md-9">
+    <br>
+    <h2>Post登録・更新</h2>
+    <br>
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label>タイトル</label>
+        {{ form.title }}
+      </div>
+      <br>
+      <div class="form-group">
+        <label>内容</label>
+        {{ form.content }}
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">保存</button>
+      <br><br>
+    </form>
 
-
+  </div>
+</div>
 
 
 {% endblock %}

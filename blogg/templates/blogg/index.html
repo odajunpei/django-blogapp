@@ -21,6 +21,7 @@ base.htmlはrailsのapplication.htmlを同じようなもの -->
           <p class="card-text">
             {{ item.content}}
           </p>
+          <a href="{% url 'blogg:post_detail' item.id %}" type="button" class="btn btn-light-blue btn-md">もっと読む</a>
         </div>
       </div>
     </div>
