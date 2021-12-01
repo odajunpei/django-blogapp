@@ -3,8 +3,9 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView, ListView
 from .models import Post
 from django.urls import reverse_lazy
-from .forms import PostForm
+from .forms import PostForm, LoginForm
 from django.contrib import messages
+from django.contrib.auth.views import LoginView
 
 
 class Index(TemplateView):
@@ -51,3 +52,8 @@ class PostList(ListView):
 
     def get_queryset(self):
         return Post.objects.all().order_by('-created_at')
+
+
+class Login(LoginView):
+    form_class = LoginForm
+    template_name = 'blogg/login.html'

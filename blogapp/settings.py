@@ -123,3 +123,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ログイン機能の追加
+LOGIN_URL = 'blogg/login'
+LOGIN_REDIRECT_URL = 'blogg:index'
