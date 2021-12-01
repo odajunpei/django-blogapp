@@ -44,6 +44,19 @@
               管理画面へ
             </a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="account" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Account</a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="account">
+              {% if request.user.is_authenticated %}
+              <a class="dropdown-item">{{ request.user }}</a>
+              <a class="dropdown-item" href="">ログアウト</a>
+              {% else %}
+              <a class="dropdown-item" href="{% url 'blogg:login' %}">ログイン</a>
+              <a class="dropdown-item" href="">ユーザ登録</a>
+              {% endif %}
+            </div>
+          </li>
           <li class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link active" href="{% url 'blogg:post_create' %}">
               <div>
@@ -53,8 +66,8 @@
             </a>
           </li>
           <li class="nav-item dropdown text-center mx-2 mx-lg-1">
-            <a class="nav-link dropdown-toggle" href="{% url 'blogg:post_list' %}" id="navbarDropdown" role="button" data-mdb-toggle="dropdown"
-              aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="{% url 'blogg:post_list' %}" id="navbarDropdown" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
               <div>
                 <i class="far fa-envelope fa-lg mb-1"></i>
               </div>
@@ -77,11 +90,11 @@
         <!-- Right links -->
         <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
           <li class="nav-item text-center mx-2 mx-lg-1">
-            <a class="nav-link" href="#!">
+            <a class="nav-link" href="#!" id="account">
               <div>
                 <i class="fas fa-bell fa-lg mb-1"></i>
               </div>
-              Messages
+              account
             </a>
           </li>
           <li class="nav-item text-center mx-2 mx-lg-1">
