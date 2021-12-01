@@ -5,7 +5,7 @@ from .models import Post
 from django.urls import reverse_lazy
 from .forms import PostForm, LoginForm
 from django.contrib import messages
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 
 class Index(TemplateView):
@@ -57,3 +57,7 @@ class PostList(ListView):
 class Login(LoginView):
     form_class = LoginForm
     template_name = 'blogg/login.html'
+
+
+class Logout(LogoutView):
+    template_name = 'blogg/logout.html'

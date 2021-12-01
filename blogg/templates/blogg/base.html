@@ -50,7 +50,7 @@
             <div class="dropdown-menu dropdown-primary" aria-labelledby="account">
               {% if request.user.is_authenticated %}
               <a class="dropdown-item">{{ request.user }}</a>
-              <a class="dropdown-item" href="">ログアウト</a>
+              <a class="dropdown-item" href="{% url 'blogg:logout' %}">ログアウト</a>
               {% else %}
               <a class="dropdown-item" href="{% url 'blogg:login' %}">ログイン</a>
               <a class="dropdown-item" href="">ユーザ登録</a>
