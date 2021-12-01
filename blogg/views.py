@@ -1,11 +1,12 @@
 from django.shortcuts import render, resolve_url
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView, ListView
 from .models import Post
 from django.urls import reverse_lazy
-from .forms import PostForm, LoginForm
+from .forms import PostForm, LoginForm, SignUpForm
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import login
 
 
 class Index(TemplateView):
@@ -61,3 +62,16 @@ class Login(LoginView):
 
 class Logout(LogoutView):
     template_name = 'blogg/logout.html'
+
+
+class Signup(CreateView):
+    form_class = SignUpForm
+    template_name = 'blogg/signup.html'
+    success_url = reverse_lazy('blogg:index')
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        self.object = user
+        messages.info(self.request, 'ユーザ登録をしました。')
+        return HttpResponseRedirect(self.get_success_url())
