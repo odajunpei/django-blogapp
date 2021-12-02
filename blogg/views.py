@@ -1,7 +1,7 @@
-from django.shortcuts import render, resolve_url
+from django.shortcuts import render, resolve_url, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView, ListView
-from .models import Post
+from .models import Post, Like
 from django.urls import reverse_lazy
 from .forms import PostForm, LoginForm, SignUpForm
 from django.contrib import messages
@@ -92,3 +92,14 @@ class Signup(CreateView):
         self.object = user
         messages.info(self.request, 'ユーザ登録をしました。')
         return HttpResponseRedirect(self.get_success_url())
+
+
+def Like_add(request, post_id):
+    post = Post.objects.get(id=post_id)
+    like = Like()
+    like.user = request.user
+    like.post = post
+    like.save()
+
+    messages.success(request, 'お気に入りに追加しました!')
+    return redirect('blogg:post_detail', post.id)

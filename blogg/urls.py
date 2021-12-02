@@ -12,5 +12,6 @@ urlpatterns = [
     path('post_list', views.PostList.as_view(), name='post_list'),
     path('login', views.Login.as_view(), name='login'),
     path('logout', views.Logout.as_view(), name='logout'),
-    path('signup', views.Signup.as_view(), name='signup')
+    path('signup', views.Signup.as_view(), name='signup'),
+    path('like/<int:post_id>', views.Like_add, name='like_add'),
 ]
