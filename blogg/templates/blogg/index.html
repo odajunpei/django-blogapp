@@ -17,7 +17,7 @@ base.htmlはrailsのapplication.htmlを同じようなもの -->
       <div class="card mb-4">
         <img src="https://mdbootstrap.com/img/new/standard/city/044.jpg" class="card-img-top" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">{{ item.title }}</h5>
+          <h5 class="card-title">{{ item.title }}<small>{{ item.author }}</small></h5>
           <p class="card-text">
             {{ item.content}}
           </p>
